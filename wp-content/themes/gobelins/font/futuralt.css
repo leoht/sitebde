@@ -1,0 +1,8 @@
+@font-face {
+    font-family: 'FuturaLTRegular';
+    src: url('futuralt.eot');
+    src: url('futuralt.eot') format('embedded-opentype'),
+         url('futuralt.woff') format('woff'),
+         url('futuralt.ttf') format('truetype'),
+         url('futuralt.svg#FuturaLTRegular') format('svg');
+}
