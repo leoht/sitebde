@@ -35,5 +35,11 @@ var sign = '-';
     })
 
     $('form input#birthdate').datepicker();
+
+    $('.adherer_popup .close').click(function (e) {
+        e.preventDefault()
+        
+        $('.overlay').fadeOut(500);
+    })
    
 }) (jQuery);

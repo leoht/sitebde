@@ -11,6 +11,9 @@
 
 <div class="overlay" >
     <div class="adherer_popup" >
+        <a href="#" class="close" >
+            <img src="<?php bloginfo('template_url') ?>/images/close.png" />
+        </a>
         <h2>Adhère au BDE !</h2>
         <p>
             Pour adhérer au BDE Gobelins, il te suffit d'être élève actuel de Gobelins et de remplir, soit le formulaire ci-dessous soit de compléter le bulletin d'adhésion, puis de nous le retourner accompagné de ta cotisation de dix euros.

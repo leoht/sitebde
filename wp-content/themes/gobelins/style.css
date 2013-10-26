@@ -194,6 +194,12 @@ nav .menu a:hover {
     width: 100%;
 }
 
+.container-bonsplans {
+    position: absolute; top: 0;
+    background: #fff;
+    width: 100%;
+}
+
 .home_news h1 {
     font-size: 48px;
     font-weight: 700;
@@ -330,6 +336,16 @@ footer .credits {
     font-family: 'FuturaStdBold', sans-serif;
     text-transform: uppercase;
     margin-bottom: 20px;
+}
+
+.adherer_popup .close {
+    float: right;
+    position: relative; bottom: 20px; left: 15px;
+    opacity: 0.7;
+}
+
+.adherer_popup .close:hover {
+    opacity: 1;
 }
 
 .adherer_popup form p {
