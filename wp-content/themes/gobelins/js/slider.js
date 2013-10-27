@@ -32,13 +32,14 @@ var sign = '-';
 
     $('.home_button, .link_adherer').click(function () {
         $('.overlay').fadeIn(500);
+        $('.adherer_popup form input[name="last_name"]').focus();
     })
 
     $('form input#birthdate').datepicker();
 
     $('.adherer_popup .close').click(function (e) {
         e.preventDefault()
-        
+
         $('.overlay').fadeOut(500);
     })
    

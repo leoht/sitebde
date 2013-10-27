@@ -71,6 +71,9 @@
 <body <?php body_class(); ?>>
 
     <nav>
+        <div class="logo" >
+            <a href="<?php bloginfo('url') ?>" ><img src="<?php bloginfo('template_url') ?>/images/logo.jpg" width="48" height="48"/></a>
+        </div>
         <div class="show-menu" >
 
         </div>

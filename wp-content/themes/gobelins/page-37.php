@@ -1,60 +1,11 @@
-<?php get_header(); ?>
+<?php get_header() ?>
 
-    <div class="home_slider" >
-        <?php $query = new WP_Query(array(
-            'post_type' => array('event', 'post'),
-            'order' => 'ASC',
-            'meta_key' => 'event_date',
-            'order_by' => 'meta_value',
-        ));
-        $i = 1;
+<div class="container-bonsplans" >
 
-        while ($query->have_posts()) : 
-            $query->the_post();
-
-            if (!get_post_meta($post->ID, 'on_front', true)) {
-                continue;
-            }
-
-            $eventDate = get_post_meta($post->ID, 'event_date', true);
-            $eventDate = new DateTime($eventDate);
-
-            $backgroundImageUrl = wp_get_attachment_image_src(
-                                    get_post_meta($post->ID, 'background_image', true),
-                                'full');
-
-            $backgroundColor = get_post_meta($post->ID, 'background_color', true);
-
-        ?>
-            <div class="home_slider_item" data-item="<?php echo $i ?>" style="background-image: url(<?php echo $backgroundImageUrl[0]; ?>); background-color: <?php echo $backgroundColor ?>;
-                        <?php if($i > 1): ?>left: <?php echo ($i-1)*100 ?>%; <?php endif ?> ">
-
-                <div class="home_slider_item_container">
-                    <div class="home_slider_item_content" >
-                        <div class="date" >
-                            <span class="day" ><?php echo $eventDate->format('d')  ?></span><br />
-                            <span class="month" ><?php echo $eventDate->format('M')  ?></span><br />
-                            <span class="year" ><?php echo $eventDate->format('Y')  ?></span>
-                        </div>
-                        <h1><a href="<?php echo get_permalink() ?>" ><?php echo get_the_title() ?></a></h1>
-                        
-                    </div>
-                </div>
-            </div>
-    <?php $i++;
-        endwhile; wp_reset_postdata(); ?>
-        
-        <div class="home_button" >
-            <a href="#" >adhérer (10 €)</a>
-        </div>
-    </div>
-
-<div class="container" >
-
-    <div class="home_news" id="news" >
+    <div class="bonsplans" >
         <?php
-
-        $nbPosts = wp_count_posts('post')->publish + wp_count_posts('event')->publish;
+        $posts = get_posts('post_type=bon-plan'); 
+        $nbPosts = count($posts);
 
         $posts_per_page = 2;
 
@@ -63,7 +14,7 @@
         $offset = ($page-1) * $posts_per_page;
 
         $query = new WP_Query(array(
-                'post_type' => array('event', 'post'),
+                'post_type' => 'bon-plan',
                 'posts_per_page' => $posts_per_page,
                 'offset' => $offset,
             ));
@@ -74,7 +25,6 @@
 
         while ($query->have_posts()) :
             $query->the_post();
-
 
             $backgroundImageUrl = wp_get_attachment_image_src(
                                         get_post_meta($post->ID, 'background_image', true),
@@ -130,4 +80,4 @@
             ?>
         </p>
 
-<?php get_footer(); ?>
+<?php get_footer() ?>

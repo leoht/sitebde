@@ -11,10 +11,26 @@ add_action('init', function () {
         ),
         'public' => true,
         'rewrite' => array(
-            'slug' => 'evenement',
+            'slug' => 'evenements',
         )
     ));
 });
+
+add_action('init', function () {
+   register_post_type('bon-plan', array(
+        'labels' => array(
+            'name' => 'Bons plans',
+            'singular_name' => 'Bon plan',
+            'add_new_item' => 'Ajouter un bon plan',
+            'new_item' => 'Nouveau bon plan',
+        ),
+        'public' => true,
+        'rewrite' => array(
+            'slug' => 'bons-plans',
+        )
+    ));
+});
+
 
 /**
  * Scripts

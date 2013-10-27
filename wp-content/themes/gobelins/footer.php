@@ -16,9 +16,13 @@
         </a>
         <h2>Adhère au BDE !</h2>
         <p>
-            Pour adhérer au BDE Gobelins, il te suffit d'être élève actuel de Gobelins et de remplir, soit le formulaire ci-dessous soit de compléter le bulletin d'adhésion, puis de nous le retourner accompagné de ta cotisation de dix euros.
+            Il te suffit d'être un élève de Gobelins et de remplir ce formulaire, après quoi tu seras redirigé sur le site Paypal afin
+            de finaliser la transaction correspondant au montant de l'adhésion. Tu peux également remplir ce formulaire papier et nous le retourner
+            accompagné de ta cotisation de 10 €.
         </p>
         <form action="<?php bloginfo('url') ?>/process.php" method="POST" >
+            <input type="hidden" name="cmd" value="_s-xclick">
+            <input type="hidden" name="hosted_button_id" value="7HSF8NGD94D68">
             <p><label for="last_name" >Nom *</label> <input type="text" id="last_name" name="last_name" /></p>
             <p><label for="first_name" >Prénom *</label> <input type="text" id="first_name" name="first_name" /></p>
             <p><label for="email" >Adresse e-mail *</label> <input type="email" id="email" name="email" /></p>
