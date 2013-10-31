@@ -85,7 +85,6 @@ nav .menu, nav .show-menu {
 
 nav .menu {
     width: 85%;
-    display: none;
 }
 
 nav .menu a {
@@ -167,6 +166,29 @@ nav .menu a:hover {
     color: #fff;
     width: 960px;
     font-family: 'FuturaStdBold', sans-serif;
+}
+
+.slider_controls {
+    position: fixed;
+    z-index: 40;
+    top: 500px;
+    width: 100%;
+}
+
+.slider_controls_container {
+    width: 70px;
+    margin: auto;
+    padding: 8px;
+    background: rgba(0,0,0,0.9);
+    text-align: center;
+}
+
+.slider_controls_button {
+    width: 10px;
+    height: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    margin: 0 4px 0 4px;
 }
 
 .home_button {
@@ -327,6 +349,7 @@ nav .menu a:hover {
 
 a.next_page {
     color: black;
+    text-transform: uppercase;
 }
 
 .container-single .single {

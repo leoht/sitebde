@@ -1,11 +1,31 @@
-var currentItem = 1;
-var sign = '-';
+var currentItem = 1
+var sign = '-'
+var auto = true;
 
 (function ($) {
 
+    var showSlide = function (slide) {
+        var diff = currentItem - slide
+
+        // go back
+        if (diff > 0) {
+            $('.home_slider_item').animate({
+                left: '+='+(diff*100)+'%'
+            }, 700, 'easeInOutCirc');
+        } 
+        // go forward
+        else if (diff < 0) {
+            $('.home_slider_item').animate({
+                left: '-='+(-diff*100)+'%'
+            }, 700, 'easeInOutCirc');
+        }
+
+        currentItem = slide
+    }
+
     var nextSlide = function () {
 
-        if ($(document).scrollTop() > 0) {
+        if ($(document).scrollTop() > 0 || !auto) {
             return;
         }
         
@@ -20,13 +40,14 @@ var sign = '-';
         }
     }
 
-    $('.show-menu, .menu').mouseover(function () {
-        $('.menu').show(0)
-    })
 
-    $('.show-menu, .menu').mouseout(function () {
-        $('.menu').hide(0)
-    })
+    // $('.show-menu, .menu').mouseover(function () {
+    //     $('.menu').show(0)
+    // })
+
+    // $('.show-menu, .menu').mouseout(function () {
+    //     $('.menu').hide(0)
+    // })
 
     setInterval(nextSlide, 5000)
 
@@ -41,6 +62,14 @@ var sign = '-';
         e.preventDefault()
 
         $('.overlay').fadeOut(500);
+    })
+
+    $('.slider_controls_button').click(function () {
+        // cut the auto sliding
+        auto = false
+
+        var slide = $(this).attr('data-slide')
+        showSlide(slide)
     })
    
 }) (jQuery);

@@ -43,6 +43,15 @@
             </div>
     <?php $i++;
         endwhile; wp_reset_postdata(); ?>
+
+        <div class="slider_controls" >
+            <div class="slider_controls_container" >
+            <?php for ($j = 1 ; $j < $i; $j++) { ?>
+
+                <img src="<?php bloginfo('template_url') ?>/images/slider-btn.png" class="slider_controls_button" data-slide="<?php echo $j ?>" />
+            <?php } ?>
+            </div>
+        </div>
         
         <div class="home_button" >
             <a href="#" >adhérer (10 €)</a>
