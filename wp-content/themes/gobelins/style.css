@@ -297,17 +297,19 @@ nav .menu a:hover {
     padding: 10px 120px 0 10px;
 }
 
-.home_news_single_content a.more {
+.home_news_single_content a.more, .single_content p a.home {
     color: black;
     display: block;
     float: right;
-    margin: 20px 120px 0 0;
-    padding: 5px;
-    text-decoration: underline;
+    margin: 20px 90px 0 0;
+    padding: 8px 10px 3px 10px;
     font-family: 'FuturaLTLight', sans-serif;
+    text-transform: uppercase;
 }
 
-.home_news_single_content a.more:hover {
+.single_content p a.home { margin-right: 0px; }
+
+.home_news_single_content a.more:hover, .single_content p a.home:hover {
     background: #000;
     color: #fff;
     text-decoration: none;
@@ -326,6 +328,45 @@ nav .menu a:hover {
 a.next_page {
     color: black;
 }
+
+.container-single .single {
+    width: 100%;
+    height: auto;
+    background-position: center center;
+}
+
+.container-single .single_content {
+    padding: 120px 25px 20px 80px;
+    background: #fff;
+    width: 50%;
+    min-height: 500px;
+    margin-bottom: 50px;
+}
+
+.single_content h1 {
+    font-size: 38px;
+    text-transform: uppercase;
+}
+
+.single_content p {
+    margin-top: 20px;
+    font-size: 18px;
+    font-weight: 300;
+    line-height: 24px;
+    font-family: 'FuturaLTLight', 'Source Sans Pro', sans-serif;
+}
+
+.single_infos {
+    position: absolute;
+    left: 60%;
+    top: 100px;
+    z-index: 20;
+    background: rgba(0,0,0,0.9);
+    padding: 25px;
+}
+
+.single_infos .prix { font-size: 52px; color: white; text-transform: uppercase; font-family: 'FuturaLTBook'; }
+.single_infos .date { margin-top: 20px; font-size: 28px; color: white; text-transform: uppercase; font-family: 'FuturaLTBook'; color: #c0392b; }
 
 footer {
     text-align: center;

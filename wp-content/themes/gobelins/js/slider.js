@@ -28,7 +28,7 @@ var sign = '-';
         $('.menu').hide(0)
     })
 
-    setInterval(nextSlide, 3000)
+    setInterval(nextSlide, 5000)
 
     $('.home_button, .link_adherer').click(function () {
         $('.overlay').fadeIn(500);

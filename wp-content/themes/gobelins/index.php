@@ -56,9 +56,11 @@
 
         $nbPosts = wp_count_posts('post')->publish + wp_count_posts('event')->publish;
 
-        $posts_per_page = 2;
+        $posts_per_page = 1;
 
-        $page = isset($_GET['page']) ? $_GET['page'] : 1;
+        $nbPages = ceil($nbPosts / $posts_per_page); 
+
+        $page = isset($_GET['page']) && ($_GET['page'] > 0 && $_GET['page'] <= $nbPages) ? (int) $_GET['page'] : 1;
 
         $offset = ($page-1) * $posts_per_page;
 
@@ -68,7 +70,7 @@
                 'offset' => $offset,
             ));
 
-        $nbPages = ceil($nbPosts / $posts_per_page); 
+        
 
         $nextPage = $page+1;
 
@@ -99,7 +101,7 @@
                     <p>
                         <?php echo get_the_excerpt() ?>
                     </p>
-                    <a href="<?php echo get_permalink() ?>" class="more" >lire en entier</a> 
+                    <a href="<?php echo get_permalink() ?>" class="more" >voir en entier</a> 
                 </div>
                 
 
@@ -118,16 +120,7 @@
     </div>
 
         <p class="pagination_links" >
-            <?php
-                for ($i = 1 ; $i <= $nbPages ; $i++) {
-                    ?>
-                        <a class="next_page" href="<?php bloginfo('url') ?>?page=<?php echo $i ?>" ><?php echo $i ?></a>
-                        <?php if ($i == $nbPages-1) { ?>
-                            - 
-                        <?php } ?>
-                    <?php
-                }
-            ?>
+            <?php echo gob_pagination($page, $nbPages) ?>
         </p>
 
 <?php get_footer(); ?>

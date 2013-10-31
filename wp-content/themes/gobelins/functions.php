@@ -1,5 +1,18 @@
 <?php
 
+function gob_pagination($page, $nbPages)
+{
+    if ($page > 1) { ?>
+    <a class="next_page" href="<?php bloginfo('url') ?>?page=<?php echo $page-1 ?>" >&lt; Précédent</a>
+    <?php } ?>
+    <?php if ($page > 1 && $page < $nbPages) { ?>
+     -
+    <?php } ?>
+    <?php if ($page < $nbPages) { ?>    
+    <a class="next_page" href="<?php bloginfo('url') ?>?page=<?php echo $page+1 ?>" >Suivant &gt;</a>
+    <?php } 
+}
+
 
 add_action('init', function () {
    register_post_type('event', array(
