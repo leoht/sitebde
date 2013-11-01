@@ -14,6 +14,22 @@ function gob_pagination($page, $nbPages)
 }
 
 
+function generate_post_tag($type)
+{
+    $tag = '<br />';
+
+    switch ($type) {
+        case 'event':
+            $tag .= '<span class="event-tag" >évènement</span>';
+            break;
+        case 'bon-plan':
+            $tag .= '<span class="bonplan-tag" >bon plan !</span>';
+            break;
+    }
+
+    return $tag;
+}
+
 add_action('init', function () {
    register_post_type('event', array(
         'labels' => array(

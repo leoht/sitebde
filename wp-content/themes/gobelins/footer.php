@@ -3,8 +3,8 @@
         
         <span class="credits" >Réalisé par la cellule web du BDE Gobelins</span>
         <div class="footer_links" >
-            <a href="" >mentions légales</a> - 
-            <a href="" >contact</a>
+            <a href="<?php bloginfo('url') ?>/mentions-legales" >mentions légales</a> - 
+            <a href="<?php bloginfo('url') ?>/contact" >contact</a>
         </div>
     </footer>
 </div> <!-- container -->

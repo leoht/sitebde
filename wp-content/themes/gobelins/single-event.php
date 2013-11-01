@@ -5,6 +5,8 @@
         $eventDate = get_post_meta($post->ID, 'event_date', true);
         $eventDate = new DateTime($eventDate);
 
+        $isUnknownDate = get_post_meta($post->ID, 'unknown_date', true);
+
         $backgroundImageUrl = wp_get_attachment_image_src(
                                 get_post_meta($post->ID, 'background_image', true),
                             'full');
@@ -17,20 +19,34 @@
 
         <div class="single_infos" >
             <?php 
+                $isUnknownPrice = get_post_meta($post->ID, 'unknown_price', true);
                 $price = get_post_meta($post->ID, 'price', true);
-                if ($price > 0) {
-                    ?>
-                    <div class="prix" ><?php echo $price ?> €</div>
-                    <?php
-                } else {
-                    ?>
-                    <div class="prix" >Gratuit</div>
-                    <?php
+                $guestPrice = get_post_meta($post->ID, 'price_guest', true);
+
+                if (!$isUnknownPrice) {
+                    if ($price > 0) {
+                        ?>
+                        <div class="prix" ><?php echo $price ?> €</div>
+                        <div class="prix-info" >adhérents</div>
+
+                        <?php if ($guestPrice > 0) { ?>
+                        <div class="prix" ><?php echo $guestPrice ?> €</div>
+                        <div class="prix-info" >non-adhérents</div>
+                        <?php }
+                    } else {
+                        ?>
+                        <div class="prix" >Gratuit</div>
+                        <?php
+                    }
                 }
             ?>
 
             <div class="date" >
-                Le <?php echo $eventDate->format('Y/m/d') ?>
+                <?php if (!$isUnknownDate) { ?>
+                    Le <?php echo $eventDate->format('d/m/Y') ?>
+                <?php } else { ?>
+                    Coming soon
+                <?php } ?>
             </div>
             
         </div>

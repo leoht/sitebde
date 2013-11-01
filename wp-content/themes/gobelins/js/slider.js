@@ -4,6 +4,8 @@ var auto = true;
 
 (function ($) {
 
+    var documentBody = (($.browser.chrome)||($.browser.safari)) ? document.body : document.documentElement
+
     var showSlide = function (slide) {
         var diff = currentItem - slide
 
@@ -49,7 +51,7 @@ var auto = true;
     //     $('.menu').hide(0)
     // })
 
-    setInterval(nextSlide, 5000)
+    setInterval(nextSlide, 8000)
 
     $('.home_button, .link_adherer').click(function () {
         $('.overlay').fadeIn(500);
@@ -70,6 +72,10 @@ var auto = true;
 
         var slide = $(this).attr('data-slide')
         showSlide(slide)
+    })
+
+    $('.scroll').click(function () {
+        $(documentBody).animate({scrollTop: $('#news').offset().top - 150}, 1200,'easeInOutCubic');
     })
    
 }) (jQuery);

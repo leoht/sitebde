@@ -6,18 +6,18 @@
             'order' => 'ASC',
             'meta_key' => 'event_date',
             'order_by' => 'meta_value',
+            'posts_limit' => 3,
         ));
         $i = 1;
 
         while ($query->have_posts()) : 
             $query->the_post();
 
-            if (!get_post_meta($post->ID, 'on_front', true)) {
-                continue;
-            }
 
             $eventDate = get_post_meta($post->ID, 'event_date', true);
             $eventDate = new DateTime($eventDate);
+
+            $isUnknownDate = get_post_meta($post->ID, 'unknown_date', true);
 
             $backgroundImageUrl = wp_get_attachment_image_src(
                                     get_post_meta($post->ID, 'background_image', true),
@@ -32,11 +32,21 @@
                 <div class="home_slider_item_container">
                     <div class="home_slider_item_content" >
                         <div class="date" >
-                            <span class="day" ><?php echo $eventDate->format('d')  ?></span><br />
-                            <span class="month" ><?php echo $eventDate->format('M')  ?></span><br />
-                            <span class="year" ><?php echo $eventDate->format('Y')  ?></span>
+                            <?php if (!$isUnknownDate) { ?>
+                                <span class="day" ><?php echo $eventDate->format('d')  ?></span><br />
+                                <span class="month" ><?php echo $eventDate->format('M')  ?></span><br />
+                                <span class="year" ><?php echo $eventDate->format('Y')  ?></span>
+                                <?php } else { ?>
+                                    <span class="avenir-1" >coming</span><br />
+                                    <span class="avenir-2" >really really</span><br />
+                                    <span class="avenir-3" >soon</span>
+                                <?php } ?>
                         </div>
                         <h1><a href="<?php echo get_permalink() ?>" ><?php echo get_the_title() ?></a></h1>
+
+                        <p class="excerpt" >
+                            <?php echo get_the_excerpt() ?>
+                        </p>
                         
                     </div>
                 </div>
@@ -51,11 +61,17 @@
                 <img src="<?php bloginfo('template_url') ?>/images/slider-btn.png" class="slider_controls_button" data-slide="<?php echo $j ?>" />
             <?php } ?>
             </div>
+
+            <div class="scroll" >
+
+        </div>
         </div>
         
         <div class="home_button" >
             <a href="#" >adhérer (10 €)</a>
         </div>
+
+
     </div>
 
 <div class="container" >
@@ -65,7 +81,7 @@
 
         $nbPosts = wp_count_posts('post')->publish + wp_count_posts('event')->publish;
 
-        $posts_per_page = 1;
+        $posts_per_page = 6;
 
         $nbPages = ceil($nbPosts / $posts_per_page); 
 
@@ -74,7 +90,7 @@
         $offset = ($page-1) * $posts_per_page;
 
         $query = new WP_Query(array(
-                'post_type' => array('event', 'post'),
+                'post_type' => array('event', 'post', 'bon-plan'),
                 'posts_per_page' => $posts_per_page,
                 'offset' => $offset,
             ));
@@ -91,8 +107,7 @@
                                         get_post_meta($post->ID, 'background_image', true),
                                     'full');
 
-            $eventDate = get_post_meta($post->ID, 'event_date', true);
-            $eventDate = new DateTime($eventDate);
+            $date = new DateTime($post->post_date);
 
             $backgroundColor = get_post_meta($post->ID, 'background_color', true);
         ?>
@@ -102,11 +117,13 @@
                 </div>
                 <div class="home_news_single_content" >
                     <div class="date" >
-                        <span class="day" ><?php echo $eventDate->format('d')  ?></span><br />
-                        <span class="month" ><?php echo $eventDate->format('M')  ?></span><br />
-                        <span class="year" ><?php echo $eventDate->format('Y')  ?></span>
+                        posté le<br /><br />
+                        <span class="day" ><?php echo $date->format('d')  ?></span><br />
+                        <span class="month" ><?php echo $date->format('M')  ?></span><br />
+                        <span class="year" ><?php echo $date->format('Y')  ?></span>
                     </div>
-                    <h1><a href="<?php echo get_permalink() ?>" ><?php echo get_the_title() ?></a></h1>
+                    <h1><a href="<?php echo get_permalink() ?>" ><?php echo get_the_title() ?></a>
+                    <?php echo generate_post_tag($post->post_type) ?></h1>
                     <p>
                         <?php echo get_the_excerpt() ?>
                     </p>

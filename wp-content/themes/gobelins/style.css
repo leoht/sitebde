@@ -71,8 +71,7 @@ nav .show-menu:hover {
 }
 
 nav .logo {
-    float: left;
-    margin-left: 15px;
+    position: absolute; left: 25px;
 }
 
 nav .menu, nav .show-menu {
@@ -84,7 +83,9 @@ nav .menu, nav .show-menu {
 }
 
 nav .menu {
-    width: 85%;
+    width: 100%;
+    float: left;
+    padding-left: 150px;
 }
 
 nav .menu a {
@@ -110,7 +111,7 @@ nav .menu a:hover {
     background-position: center center;
     background-attachment: fixed;
     background-repeat: no-repeat;
-     position: fixed; top: 0; left: 0;
+     position: absolute; top: 0; left: 0;
     z-index: 20;
 }
 
@@ -130,7 +131,7 @@ nav .menu a:hover {
     width: 960px;
     height: 170px;
     /*border-radius: 6px;*/
-    background: rgba(5,5,5,0.9);
+    background: rgba(2,2,2,0.95);
 }
 
 .home_slider_item_content .date {
@@ -159,8 +160,29 @@ nav .menu a:hover {
     font-family: 'FuturaLTLight', sans-serif;
 }
 
+.home_slider_item_content .date .avenir-1 {
+    font-size: 24px;
+    text-transform: uppercase;
+    line-height: 32px;
+}
+
+.home_slider_item_content .date .avenir-2 {
+    font-size: 18px;
+    text-transform: uppercase;
+    font-family: 'FuturaLTLight', sans-serif;
+    line-height: 26px;
+}
+
+.home_slider_item_content .date .avenir-3 {
+    font-size: 36px;
+    line-height: 42px;
+    text-transform: uppercase;
+    color: #c0392b;
+    font-family: 'FuturaLTLight', sans-serif;
+}
+
 .home_slider_item_content h1 {
-    font-size: 52px;
+    font-size: 48px;
     text-transform: uppercase;
     padding: 15px;
     color: #fff;
@@ -168,9 +190,16 @@ nav .menu a:hover {
     font-family: 'FuturaStdBold', sans-serif;
 }
 
+.home_slider_item_content .excerpt {
+    color: white;
+    font-family: 'FuturaLTLight', sans-serif;
+    font-size: 18px;
+    line-height: 22px;
+}
+
 .slider_controls {
-    position: fixed;
-    z-index: 40;
+    position: absolute;
+    z-index: 21;
     top: 500px;
     width: 100%;
 }
@@ -192,7 +221,7 @@ nav .menu a:hover {
 }
 
 .home_button {
-    position: fixed;
+    position: absolute;
     z-index: 24;
     top: 600px;
     width: 100%;
@@ -214,6 +243,14 @@ nav .menu a:hover {
     background-color: #27be60;
 }
 
+.scroll {
+    width: 50px;
+    height: 50px;
+    background: url(images/scroll.png) no-repeat;
+    margin: 130px auto 0 auto;
+    cursor: pointer;
+}
+
 .container {
     position: absolute; top: 100%;
     z-index: 30;
@@ -222,7 +259,7 @@ nav .menu a:hover {
 }
 
 .container-bonsplans, .container-legal {
-    position: absolute; top: 0;
+    position: absolute; top: 60px;
     background: #fff;
     width: 100%;
 }
@@ -264,12 +301,12 @@ nav .menu a:hover {
 }
 
 .home_news_single_content {
-    padding-top: 120px;
-    height: 180px;
+    padding-top: 80px;
+    height: 220px;
 }
 
 .home_news_single_image {
-    width: 500px;
+    width: 30%;
     height: 300px;
     overflow: hidden;
     float: left;
@@ -295,6 +332,8 @@ nav .menu a:hover {
     text-align: center;
 }
 
+.home_news_single_content .date { text-transform: uppercase; }
+
 .home_news_single_content .date .day {
     font-size: 68px;
     line-height: 62px;
@@ -303,7 +342,7 @@ nav .menu a:hover {
 .home_news_single_content .date .month {
     font-size: 36px;
     line-height: 34px;
-    text-transform: uppercase;
+    
 }
 
 .home_news_single_content .date .year {
@@ -311,6 +350,9 @@ nav .menu a:hover {
     line-height: 34px;
     font-family: 'FuturaLTLight', sans-serif;
 }
+
+.event-tag { padding: 5px; border-radius: 3px; background: #c0392b; color: white; font-size: 16px; line-height: 18px; text-transform: none; font-family: 'FuturaLTLight', sans-serif; }
+.bonplan-tag { padding: 5px; border-radius: 3px; background: #27ae60; color: white; font-size: 16px; line-height: 18px; text-transform: none; font-family: 'FuturaLTLight', sans-serif; }
 
 .home_news_single_content p {
     font-family: 'FuturaLTLight', sans-serif;
@@ -355,7 +397,8 @@ a.next_page {
 .container-single .single {
     width: 100%;
     height: auto;
-    background-position: center center;
+    background-position: right center;
+    background-repeat: no-repeat;
 }
 
 .container-single .single_content {
@@ -379,6 +422,11 @@ a.next_page {
     font-family: 'FuturaLTLight', 'Source Sans Pro', sans-serif;
 }
 
+.single_content p a {
+    color: black;
+    text-decoration: underline;
+}
+
 .single_infos {
     position: absolute;
     left: 60%;
@@ -388,8 +436,9 @@ a.next_page {
     padding: 25px;
 }
 
-.single_infos .prix { font-size: 52px; color: white; text-transform: uppercase; font-family: 'FuturaLTBook'; }
-.single_infos .date { margin-top: 20px; font-size: 28px; color: white; text-transform: uppercase; font-family: 'FuturaLTBook'; color: #c0392b; }
+.single_infos .prix { text-align: right; font-size: 52px; line-height: 58px; color: white; text-transform: uppercase; font-family: 'FuturaLTBook'; }
+.single_infos .prix-info { text-align: right; font-size: 20px; color: white; line-height: 26px; text-transform: uppercase; font-family: 'FuturaLTLight'; }
+.single_infos .date { margin: 20px 0 20px 0; font-size: 28px; color: white; text-transform: uppercase; font-family: 'FuturaLTBook'; color: #c0392b; }
 
 footer {
     text-align: center;
@@ -463,14 +512,17 @@ footer .credits {
 
 .adherer_popup form input {
     margin-bottom: 15px;
-    border: 1px solid #aaa;
-    padding: 5px;
     display: block;
     float: right;
     width: 250px;
 }
 
-.adherer_popup form input[type=submit] {
+form input {
+    border: 1px solid #aaa;
+    padding: 5px;
+}
+
+form input[type=submit] {
     float: left;
     border: none;
     background: #27ae60;
