@@ -45,7 +45,8 @@
                         <h1><a href="<?php echo get_permalink() ?>" ><?php echo get_the_title() ?></a></h1>
 
                         <p class="excerpt" >
-                            <?php echo get_the_excerpt() ?>
+                            <?php echo get_the_excerpt() ?><br /><br />
+                            <a href="<?php echo get_permalink() ?>" >en savoir plus</a>
                         </p>
                         
                     </div>
@@ -93,6 +94,9 @@
                 'post_type' => array('event', 'post', 'bon-plan'),
                 'posts_per_page' => $posts_per_page,
                 'offset' => $offset,
+                // 'meta_key' => 'event_date',
+                // 'order_by' => 'meta_value',
+                // 'order' => 'ASC',
             ));
 
         
